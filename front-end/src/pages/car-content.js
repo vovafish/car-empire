@@ -1,6 +1,6 @@
 const cars = [
   {
-    Name: 'chevrolet chevelle malibu',
+    Name: 'chevrolet-chevelle-malibu',
     Miles_per_Gallon: 18,
     Cylinders: 8,
     Displacement: 307,
@@ -9,7 +9,7 @@ const cars = [
     Acceleration: 12,
     Year: '1970-01-01',
     Origin: 'USA',
-    Image: './chevrolet-chevelle-malibu.jpg',
+    Image: 'chevrolet-chevelle-malibu.jpg',
   },
   {
     Name: 'buick skylark 320',
@@ -24,7 +24,7 @@ const cars = [
     Image: './buick-skylark-320.jpg',
   },
   {
-    Name: 'plymouth-satellite',
+    Name: 'plymouth satellite',
     Miles_per_Gallon: 18,
     Cylinders: 8,
     Displacement: 318,
