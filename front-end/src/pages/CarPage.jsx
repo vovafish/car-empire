@@ -8,9 +8,9 @@ const CarPage = () => {
 
   return (
     <>
-      <h1>{car.Name}</h1>
+      <h1>{car.title}</h1>
       <p>Year: {car.Year}</p>
-      <img src={car.Image} style={{ width: '200px' }} alt={car.Name} />
+      <img src={car.Image} style={{ width: '200px' }} alt={car.title} />
     </>
   );
 };

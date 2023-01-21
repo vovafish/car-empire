@@ -2,6 +2,7 @@ const cars = [
   {
     id: 1,
     Name: 'chevrolet-chevelle-malibu',
+    title: 'Chevrolet Chevelle Malibu',
     Miles_per_Gallon: 18,
     Cylinders: 8,
     Displacement: 307,
@@ -14,7 +15,8 @@ const cars = [
   },
   {
     id: 2,
-    Name: 'buick skylark 320',
+    Name: 'buick-skylark-320',
+    title: 'Buick Skylark 320',
     Miles_per_Gallon: 15,
     Cylinders: 8,
     Displacement: 350,
@@ -27,7 +29,8 @@ const cars = [
   },
   {
     id: 3,
-    Name: 'plymouth satellite',
+    Name: 'plymouth-satellite',
+    title: 'Plymouth Satellite',
     Miles_per_Gallon: 18,
     Cylinders: 8,
     Displacement: 318,
@@ -40,7 +43,8 @@ const cars = [
   },
   {
     id: 4,
-    Name: 'amc rebel sst',
+    Name: 'amc-rebel-sst',
+    title: 'Amc Rebel SST',
     Miles_per_Gallon: 16,
     Cylinders: 8,
     Displacement: 304,
@@ -53,7 +57,8 @@ const cars = [
   },
   {
     id: 5,
-    Name: 'ford torino',
+    Name: 'ford-torino',
+    title: 'Ford Torino',
     Miles_per_Gallon: 17,
     Cylinders: 8,
     Displacement: 302,
@@ -66,7 +71,8 @@ const cars = [
   },
   {
     id: 6,
-    Name: 'ford galaxie 500',
+    Name: 'ford-galaxie-500',
+    title: 'Ford Galaxie 500',
     Miles_per_Gallon: 15,
     Cylinders: 8,
     Displacement: 429,
