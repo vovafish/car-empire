@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import cars from './car-content';
-import style from './CarPage.module.scss';
+//import style from './CarPage.module.scss';
 
 const CarPage = () => {
   const { carId } = useParams();
@@ -10,7 +10,7 @@ const CarPage = () => {
     <>
       <h1>{car.Name}</h1>
       <p>Year: {car.Year}</p>
-      <img src={car.Image} alt={car.Name} />
+      <img src={car.Image} style={{ width: '200px' }} alt={car.Name} />
     </>
   );
 };

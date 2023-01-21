@@ -1,5 +1,6 @@
 const cars = [
   {
+    id: 1,
     Name: 'chevrolet-chevelle-malibu',
     Miles_per_Gallon: 18,
     Cylinders: 8,
@@ -9,9 +10,10 @@ const cars = [
     Acceleration: 12,
     Year: '1970-01-01',
     Origin: 'USA',
-    Image: 'chevrolet-chevelle-malibu.jpg',
+    Image: require('../temp-img/chevrolet-chevelle-malibu.jpg'),
   },
   {
+    id: 2,
     Name: 'buick skylark 320',
     Miles_per_Gallon: 15,
     Cylinders: 8,
@@ -21,9 +23,10 @@ const cars = [
     Acceleration: 11.5,
     Year: '1970-01-01',
     Origin: 'USA',
-    Image: './buick-skylark-320.jpg',
+    Image: require('../temp-img/buick-skylark-320.jpg'),
   },
   {
+    id: 3,
     Name: 'plymouth satellite',
     Miles_per_Gallon: 18,
     Cylinders: 8,
@@ -33,9 +36,10 @@ const cars = [
     Acceleration: 11,
     Year: '1970-01-01',
     Origin: 'USA',
-    Image: './plymouth-satellite.jpg',
+    Image: require('../temp-img/plymouth-satellite.jpg'),
   },
   {
+    id: 4,
     Name: 'amc rebel sst',
     Miles_per_Gallon: 16,
     Cylinders: 8,
@@ -45,9 +49,10 @@ const cars = [
     Acceleration: 12,
     Year: '1970-01-01',
     Origin: 'USA',
-    Image: './amc-rebel-sst.jpg',
+    Image: require('../temp-img/amc-rebel-sst.jpg'),
   },
   {
+    id: 5,
     Name: 'ford torino',
     Miles_per_Gallon: 17,
     Cylinders: 8,
@@ -57,9 +62,10 @@ const cars = [
     Acceleration: 10.5,
     Year: '1970-01-01',
     Origin: 'USA',
-    Image: './ford-torino.jpg',
+    Image: require('../temp-img/ford-torino.jpg'),
   },
   {
+    id: 6,
     Name: 'ford galaxie 500',
     Miles_per_Gallon: 15,
     Cylinders: 8,
@@ -69,7 +75,7 @@ const cars = [
     Acceleration: 10,
     Year: '1970-01-01',
     Origin: 'USA',
-    Image: './ford-galaxie-500.jpg',
+    Image: require('../temp-img/ford-galaxie-500.jpg'),
   },
 ];
 
