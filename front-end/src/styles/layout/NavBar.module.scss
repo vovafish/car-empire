@@ -1,0 +1,22 @@
+nav {
+	height: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	div {
+		position: absolute;
+		left: 10px;
+		img {
+			width: 200px;
+			filter: drop-shadow(5px 5px 5px #666666);
+			border-radius: 30px;
+		}
+	}
+
+	ul {
+		display: flex;
+		width: 30%;
+		justify-content: space-evenly;
+	}
+}
