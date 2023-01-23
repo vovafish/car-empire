@@ -1,5 +1,5 @@
-@import url('./styles/core/_reset.scss');
-@import url('./styles/core/_settings.scss');
-@import url('./styles/abstracts/_variables.scss');
+@import './styles/abstracts/_variables.scss';
+@import './styles/core/_reset.scss';
+@import './styles/core/_settings.scss';
 
-
+@import './styles/layout/NavBar.module.scss';
