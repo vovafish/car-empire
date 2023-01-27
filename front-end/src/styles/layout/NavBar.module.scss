@@ -4,9 +4,10 @@ nav {
 	align-items: center;
 	justify-content: center;
 
-	div {
+	.logoSite {
 		position: absolute;
 		left: 10px;
+
 		img {
 			width: 200px;
 			filter: drop-shadow(5px 5px 5px #666666);
@@ -18,5 +19,15 @@ nav {
 		display: flex;
 		width: 30%;
 		justify-content: space-evenly;
+	}
+
+	.extra {
+
+		
+	}
+
+	.dropdownBasic {
+		background-color: transparent;
+		border: none
 	}
 }

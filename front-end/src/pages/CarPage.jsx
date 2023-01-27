@@ -9,7 +9,16 @@ const CarPage = () => {
   return (
     <>
       <h1>{car.title}</h1>
-      <p>Year: {car.Year}</p>
+      <div>
+        <p>It uses {car.Miles_per_Gallon} miles per gallon</p>
+        <p>Contains {car.Cylinders}</p>
+        <p>Weight: {car.Weight_in_lbs} lbs</p>
+        <p>It has {car.Horsepower}</p>
+        <p>Origin: {car.Origin}</p>
+        <p>Year: {car.Year}</p>
+        <p>Accelerates to {car.Acceleration}</p>
+      </div>
+
       <img src={car.Image} style={{ width: '200px' }} alt={car.title} />
     </>
   );
