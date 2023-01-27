@@ -1,4 +1,4 @@
-import style from './PolicyPage.moudule.scss';
+import style from './PolicyPage.module.scss';
 
 const PolicyPage = () => {
   return (

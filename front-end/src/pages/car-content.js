@@ -168,7 +168,7 @@ const cars = [
     Image: require('../temp-img/ford-galaxie-500.jpg'),
   },
   {
-    id: 1,
+    id: 13,
     Name: 'chevrolet-chevelle-malibu',
     title: 'Chevrolet Chevelle Malibu',
     Miles_per_Gallon: 18,
@@ -182,7 +182,7 @@ const cars = [
     Image: require('../temp-img/chevrolet-chevelle-malibu.jpg'),
   },
   {
-    id: 2,
+    id: 14,
     Name: 'buick-skylark-320',
     title: 'Buick Skylark 320',
     Miles_per_Gallon: 15,
@@ -196,7 +196,7 @@ const cars = [
     Image: require('../temp-img/buick-skylark-320.jpg'),
   },
   {
-    id: 3,
+    id: 15,
     Name: 'plymouth-satellite',
     title: 'Plymouth Satellite',
     Miles_per_Gallon: 18,
@@ -210,7 +210,7 @@ const cars = [
     Image: require('../temp-img/plymouth-satellite.jpg'),
   },
   {
-    id: 4,
+    id: 16,
     Name: 'amc-rebel-sst',
     title: 'Amc Rebel SST',
     Miles_per_Gallon: 16,
@@ -224,7 +224,7 @@ const cars = [
     Image: require('../temp-img/amc-rebel-sst.jpg'),
   },
   {
-    id: 5,
+    id: 17,
     Name: 'ford-torino',
     title: 'Ford Torino',
     Miles_per_Gallon: 17,
@@ -238,7 +238,7 @@ const cars = [
     Image: require('../temp-img/ford-torino.jpg'),
   },
   {
-    id: 6,
+    id: 18,
     Name: 'ford-galaxie-500',
     title: 'Ford Galaxie 500',
     Miles_per_Gallon: 15,
@@ -252,7 +252,7 @@ const cars = [
     Image: require('../temp-img/ford-galaxie-500.jpg'),
   },
   {
-    id: 7,
+    id: 19,
     Name: 'chevrolet-chevelle-malibu',
     title: 'Chevrolet Chevelle Malibu',
     Miles_per_Gallon: 18,
@@ -266,7 +266,7 @@ const cars = [
     Image: require('../temp-img/chevrolet-chevelle-malibu.jpg'),
   },
   {
-    id: 8,
+    id: 20,
     Name: 'buick-skylark-320',
     title: 'Buick Skylark 320',
     Miles_per_Gallon: 15,
@@ -280,7 +280,7 @@ const cars = [
     Image: require('../temp-img/buick-skylark-320.jpg'),
   },
   {
-    id: 9,
+    id: 21,
     Name: 'plymouth-satellite',
     title: 'Plymouth Satellite',
     Miles_per_Gallon: 18,
@@ -294,7 +294,7 @@ const cars = [
     Image: require('../temp-img/plymouth-satellite.jpg'),
   },
   {
-    id: 10,
+    id: 22,
     Name: 'amc-rebel-sst',
     title: 'Amc Rebel SST',
     Miles_per_Gallon: 16,
@@ -308,7 +308,7 @@ const cars = [
     Image: require('../temp-img/amc-rebel-sst.jpg'),
   },
   {
-    id: 11,
+    id: 23,
     Name: 'ford-torino',
     title: 'Ford Torino',
     Miles_per_Gallon: 17,
@@ -322,7 +322,7 @@ const cars = [
     Image: require('../temp-img/ford-torino.jpg'),
   },
   {
-    id: 12,
+    id: 24,
     Name: 'ford-galaxie-500',
     title: 'Ford Galaxie 500',
     Miles_per_Gallon: 15,

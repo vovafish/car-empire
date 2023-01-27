@@ -1,4 +1,4 @@
-const user = [
+const users = [
   {
     id: 5038,
     uid: '31b16882-02c5-4d9c-b0b7-dbecd911e0ac',

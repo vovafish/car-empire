@@ -9,7 +9,7 @@ const CarsListPage = () => {
         <h1>Cars</h1>
         <div className={style.container}>
           {cars.map((car) => (
-            <Link to={`/cars/${car.Name}`} key={car.Name}>
+            <Link to={`/cars/${car.Name}`} key={car.id}>
               <div className={style.card}>
                 <h3>{car.title}</h3>
                 <p>{car.Year}</p>

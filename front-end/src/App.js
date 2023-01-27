@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import AdditionalItemPage from './pages/AdditionalItemPage';
 import ReturnOfVehiclePage from './pages/ReturnOfVehiclePage';
+import PolicyPage from './pages/PolicyPage';
 import CarPage from './pages/CarPage';
 import CarListPage from './pages/CarsListPage';
 import NavBar from './NavBar';
@@ -23,10 +24,11 @@ function App() {
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/cars" element={<CarListPage />} />
+            <Route path="/cars/:carId" element={<CarPage />} />
             <Route path="/additional-item" element={<AdditionalItemPage />} />
             <Route path="/return-vehicle" element={<ReturnOfVehiclePage />} />
+            <Route path="/policy" element={<PolicyPage />} />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/cars/:carId" element={<CarPage />} />
           </Routes>
         </div>
       </div>

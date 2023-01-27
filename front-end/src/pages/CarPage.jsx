@@ -11,9 +11,9 @@ const CarPage = () => {
       <h1>{car.title}</h1>
       <div>
         <p>It uses {car.Miles_per_Gallon} miles per gallon</p>
-        <p>Contains {car.Cylinders}</p>
+        <p>Contains {car.Cylinders} cylinders</p>
         <p>Weight: {car.Weight_in_lbs} lbs</p>
-        <p>It has {car.Horsepower}</p>
+        <p>It has {car.Horsepower} Horsepower</p>
         <p>Origin: {car.Origin}</p>
         <p>Year: {car.Year}</p>
         <p>Accelerates to {car.Acceleration}</p>
