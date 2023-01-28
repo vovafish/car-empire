@@ -11,6 +11,7 @@ import PolicyPage from './pages/PolicyPage';
 import CarPage from './pages/CarPage';
 import CarListPage from './pages/CarsListPage';
 import NavBar from './NavBar';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="/return-vehicle" element={<ReturnOfVehiclePage />} />
             <Route path="/policy" element={<PolicyPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
       </div>
