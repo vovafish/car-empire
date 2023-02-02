@@ -1,5 +1,5 @@
 import express from 'express';
-import { MongoClient } from 'mongodb';
+import { db, connectToDb } from './db.js';
 
 //initializing the express var
 const app = express();
@@ -7,11 +7,6 @@ app.use(express.json());
 
 app.get(`/api/cars/:name`, async (req, res) => {
   const { name } = req.params;
-
-  const client = new MongoClient(`mongodb://127.0.0.1:27017`);
-  await client.connect();
-
-  const db = client.db(`car-empire`);
 
   const car = await db.collection('cars').findOne({ name });
 
@@ -24,6 +19,8 @@ app.get(`/api/cars/:name`, async (req, res) => {
   res.json(car);
 });
 
-app.listen(8000, () => {
-  console.log('All good');
+connectToDb(() => {
+  app.listen(8000, () => {
+    console.log('All good');
+  });
 });
