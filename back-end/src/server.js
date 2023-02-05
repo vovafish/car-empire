@@ -5,7 +5,7 @@ import { db, connectToDb } from './db.js';
 const app = express();
 app.use(express.json());
 
-app.get(`/api/cars/:name`, async (req, res) => {
+app.get('/api/cars/:name', async (req, res) => {
   const { name } = req.params;
 
   const car = await db.collection('cars').findOne({ name });
@@ -15,12 +15,11 @@ app.get(`/api/cars/:name`, async (req, res) => {
   } else {
     res.sendStatus(404);
   }
-
-  res.json(car);
 });
 
 connectToDb(() => {
+  console.log('Successfully connected to database!');
   app.listen(8000, () => {
-    console.log('All good');
+    console.log('Server is listening on port 8000');
   });
 });
