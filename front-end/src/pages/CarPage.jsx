@@ -8,7 +8,7 @@ import NotFoundPage from './NotFoundPage';
 const CarPage = () => {
   const [carInfo, setCarInfo] = useState({
     name: 'Text',
-    Year: '0000',
+    year: '0000',
   });
 
   const { carId } = useParams();
@@ -22,7 +22,7 @@ const CarPage = () => {
     loadCarInfo();
   }, [carId]);
 
-  const car = cars.find((car) => car.Name === carId);
+  const car = cars.find((car) => car.name === carId);
 
   if (!car) {
     return <NotFoundPage />;
@@ -32,19 +32,14 @@ const CarPage = () => {
     <>
       <h1>{car.title}</h1>
       <p>
-        This is {carInfo.name} and been created in {carInfo.Year}
+        This is {carInfo.name} and been created in {carInfo.year}
       </p>
       <div>
-        <p>It uses {car.Miles_per_Gallon} miles per gallon</p>
-        <p>Contains {car.Cylinders} cylinders</p>
-        <p>Weight: {car.Weight_in_lbs} lbs</p>
-        <p>It has {car.Horsepower} Horsepower</p>
-        <p>Origin: {car.Origin}</p>
-        <p>Year: {car.Year}</p>
-        <p>Accelerates to {car.Acceleration}</p>
+        <p>Color: {car.colour}</p>
+        <p>Gearbox type: {car.gearbox}</p>
       </div>
 
-      <img src={car.Image} style={{ width: '200px' }} alt={car.title} />
+      {/* <img src={car.Image} style={{ width: '200px' }} alt={car.title} /> */}
     </>
   );
 };
