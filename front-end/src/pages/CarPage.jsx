@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import cars from './car-content';
+//import cars from './car-content';
 import NotFoundPage from './NotFoundPage';
 //import style from './CarPage.module.scss';
 
@@ -18,25 +18,26 @@ const CarPage = () => {
       const response = await axios.get(`/api/cars/${carId}`);
       const newCarInfo = response.data;
       setCarInfo(newCarInfo);
+      //console.log(newCarInfo);
     };
     loadCarInfo();
   }, [carId]);
 
-  const car = cars.find((car) => car.name === carId);
+  //const car = cars.find((car) => car.name === carId);
 
-  if (!car) {
+  if (!carInfo) {
     return <NotFoundPage />;
   }
 
   return (
     <>
-      <h1>{car.title}</h1>
       <p>
+        {/* {console.log(carInfo)} */}
         This is {carInfo.name} and been created in {carInfo.year}
       </p>
       <div>
-        <p>Color: {car.colour}</p>
-        <p>Gearbox type: {car.gearbox}</p>
+        <p>Color: {carInfo.colour}</p>
+        <p>Gearbox type: {carInfo.gearbox}</p>
       </div>
 
       {/* <img src={car.Image} style={{ width: '200px' }} alt={car.title} /> */}

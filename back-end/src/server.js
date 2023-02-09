@@ -17,6 +17,18 @@ app.get('/api/cars/:name', async (req, res) => {
   }
 });
 
+app.get('/api/cars', async (req, res) => {
+  //const { name } = req.params;
+
+  const cars = await db.collection('cars').find({}).toArray();
+  console.log(cars);
+  if (cars) {
+    res.json(cars);
+  } else {
+    res.sendStatus(404);
+  }
+});
+
 connectToDb(() => {
   console.log('Successfully connected to database!');
   app.listen(8000, () => {
