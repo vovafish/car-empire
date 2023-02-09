@@ -1,6 +1,5 @@
 const cars = [
-  /*
-  {
+  /*  {
     id: 1,
     Name: 'chevrolet-chevelle-malibu',
     title: 'Chevrolet Chevelle Malibu',
@@ -12,10 +11,9 @@ const cars = [
     Acceleration: 12,
     Year: '1970-01-01',
     Origin: 'USA',
-    Image: require('../temp-img/chevrolet-chevelle-malibu.jpg'),
+    Image: require('../temp-img/luxury-sedan.jpg'),
   },
-  */
-
+ */
   {
     id: 1,
     name: 'Luxury Sedan',
