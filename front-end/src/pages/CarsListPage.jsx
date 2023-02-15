@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import style from './CarsListPage.module.scss';
-import cars from './car-content';
+//import cars from './car-content';
 import CarsList from '../components/CarsList';
 
 const CarsListPage = () => {
-  const [carsInfo, setCarsInfo] = useState([{ name: 'Name', year: 2000 }]);
+  const [carsInfo, setCarsInfo] = useState([]);
 
   useEffect(() => {
     const loadCarsInfo = async () => {
@@ -18,15 +18,15 @@ const CarsListPage = () => {
   }, []);
 
   return (
-    <div className={style.mainCotainer}>
+    <div className="mainCotainer">
       <main className={style.main}>
         <h1>Cars</h1>
         <div className={style.container}>
-          {cars.map((car) => (
-            <Link to={`/cars/${car.name}`} key={car.name}>
+          {carsInfo.map((car) => (
+            <Link to={`/cars/${car.name}`} key={car.id}>
               <div className={style.card} key={car.id}>
-                <h3>{car.Name}</h3>
-
+                <h3>{car.name}</h3>
+                {/* {console.log(`../temp-img/${car.title}.jpg`)} */}
                 <p>{car.body_type}</p>
                 <p>{car.origin}</p>
                 <p>{car.year}</p>

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { AiOutlineLogin } from 'react-icons/ai';
+//import { AiOutlineLogin } from 'react-icons/ai';
 import style from './styles/layout/NavBar.module.scss';
-import Dropdown from 'react-bootstrap/Dropdown';
+//import Dropdown from 'react-bootstrap/Dropdown';
 import logo from './img/logo.png';
 
 const NavBar = () => {
@@ -27,8 +27,22 @@ const NavBar = () => {
           <Link to="/return-vehicle">Return Car</Link>
         </li>
       </ul>
-      <div className={style.extra}>
-        <Dropdown>
+      <div>
+        {/*  <select>
+          <option value="Login">
+            <Link to="/login">Login</Link>
+          </option>
+          <option value="SignUp">
+            <Link to="/signup">SignUp</Link>
+          </option>
+          <option value="Profile">
+            <Link to="/profile">Profile</Link>
+          </option>
+          <option value="Logout">
+            <Link to="#">SignUp</Link>
+          </option>
+        </select> */}
+        {/* <Dropdown>
           <Dropdown.Toggle
             variant="success"
             id="dropdown-basic"
@@ -43,7 +57,7 @@ const NavBar = () => {
             <Dropdown.Item href="#">Profile</Dropdown.Item>
             <Dropdown.Item href="#">Logout</Dropdown.Item>
           </Dropdown.Menu>
-        </Dropdown>
+        </Dropdown> */}
       </div>
     </nav>
   );

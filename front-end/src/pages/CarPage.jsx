@@ -6,10 +6,7 @@ import NotFoundPage from './NotFoundPage';
 //import style from './CarPage.module.scss';
 
 const CarPage = () => {
-  const [carInfo, setCarInfo] = useState({
-    name: 'Text',
-    year: '0000',
-  });
+  const [carInfo, setCarInfo] = useState();
 
   const { carId } = useParams();
 
@@ -18,7 +15,6 @@ const CarPage = () => {
       const response = await axios.get(`/api/cars/${carId}`);
       const newCarInfo = response.data;
       setCarInfo(newCarInfo);
-      //console.log(newCarInfo);
     };
     loadCarInfo();
   }, [carId]);
@@ -32,12 +28,16 @@ const CarPage = () => {
   return (
     <>
       <p>
-        {/* {console.log(carInfo)} */}
         This is {carInfo.name} and been created in {carInfo.year}
       </p>
       <div>
         <p>Color: {carInfo.colour}</p>
         <p>Gearbox type: {carInfo.gearbox}</p>
+        <img
+          src={require(`../temp-img/${carInfo.title}.jpg`)}
+          alt={carInfo.name}
+          style={{ width: '200px' }}
+        />
       </div>
 
       {/* <img src={car.Image} style={{ width: '200px' }} alt={car.title} /> */}

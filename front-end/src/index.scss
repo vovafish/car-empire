@@ -1,5 +1,6 @@
-@import './styles/abstracts/_variables.scss';
-@import './styles/core/_reset.scss';
-@import './styles/core/_settings.scss';
+@import './styles/abstracts/_variables';
+@import './styles/core/_reset';
+@import './styles/core/_settings';
+@import './styles/core/fonts';
 
-@import './styles/layout/NavBar.module.scss';
+@import './styles/layout/NavBar.module';
