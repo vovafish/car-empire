@@ -19,8 +19,6 @@ const CarPage = () => {
     loadCarInfo();
   }, [carId]);
 
-  //const car = cars.find((car) => car.name === carId);
-
   if (!carInfo) {
     return <NotFoundPage />;
   }
@@ -34,13 +32,11 @@ const CarPage = () => {
         <p>Color: {carInfo.colour}</p>
         <p>Gearbox type: {carInfo.gearbox}</p>
         <img
-          src={require(`../temp-img/${carInfo.title}.jpg`)}
+          src={require(`../img/cars/${carInfo.title}.jpg`)}
           alt={carInfo.name}
           style={{ width: '200px' }}
         />
       </div>
-
-      {/* <img src={car.Image} style={{ width: '200px' }} alt={car.title} /> */}
     </>
   );
 };

@@ -18,8 +18,6 @@ app.get('/api/cars/:name', async (req, res) => {
 });
 
 app.get('/api/cars', async (req, res) => {
-  //const { name } = req.params;
-
   const cars = await db.collection('cars').find({}).toArray();
   console.log(cars);
   if (cars) {

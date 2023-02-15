@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import style from './ReturnOfVehiclePage.module.scss';
 
 const ReturnOfVehiclePage = () => {
   const form = useRef();
@@ -11,8 +12,8 @@ const ReturnOfVehiclePage = () => {
       .sendForm(
         'service_8lfvu6w',
         'template_e7yl9tj',
-        form.current,
-        'OobbSW-DHtFMhWbqK'
+        form.current
+        //'OobbSW-DHtFMhWbqK'
       )
       .then(
         (result) => {
@@ -24,20 +25,28 @@ const ReturnOfVehiclePage = () => {
       );
   };
   return (
-    <>
-      <h1>Return of Vehucle Page</h1>
-      <div>
-        <form ref={form} onSubmit={sendEmail}>
-          <label>Name</label>
-          <input type="text" name="user_name" />
-          <label>Email</label>
-          <input type="email" name="user_email" />
-          <label>Message</label>
-          <textarea name="message" />
-          <input type="submit" value="Send" />
+    <div className="mainCotainer">
+      <main>
+        <h1>Return of Vehucle Page</h1>
+        <form ref={form} onSubmit={sendEmail} className={style.form}>
+          <div>
+            <label>Name</label>
+            <input type="text" name="user_name" />
+          </div>
+          <div>
+            <label>Email</label>
+            <input type="email" name="user_email" />
+          </div>
+          <div>
+            <label>Message</label>
+            <textarea name="message" />
+          </div>
+          <div>
+            <input type="submit" value="Send" />
+          </div>
         </form>
-      </div>
-    </>
+      </main>
+    </div>
   );
 };
 

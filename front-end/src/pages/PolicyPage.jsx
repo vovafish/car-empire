@@ -2,8 +2,8 @@ import style from './PolicyPage.module.scss';
 
 const PolicyPage = () => {
   return (
-    <>
-      <h1>Privacy Policy</h1>
+    <main className="mainCotainer">
+      <h1 className="main-title">Privacy Policy</h1>
       <p>Last updated: January 30, 2023</p>
       <p>
         This Privacy Policy describes Our policies and procedures on the
@@ -15,7 +15,7 @@ const PolicyPage = () => {
         We use Your Personal data to provide and improve the Service. By using
         the Service, You agree to the collection and use of information in
         accordance with this Privacy Policy. This Privacy Policy has been
-        created with the help of the{' '}
+        created with the help of the
         <a
           href="https://www.privacypolicies.com/privacy-policy-generator/"
           rel="noreferrer"
@@ -558,7 +558,7 @@ const PolicyPage = () => {
           <p>By phone number: 01234567890</p>
         </li>
       </ul>
-    </>
+    </main>
   );
 };
 

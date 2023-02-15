@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import style from './CarsListPage.module.scss';
-//import cars from './car-content';
-import CarsList from '../components/CarsList';
+//import CarsList from '../components/CarsList';
 
 const CarsListPage = () => {
   const [carsInfo, setCarsInfo] = useState([]);
@@ -26,12 +25,11 @@ const CarsListPage = () => {
             <Link to={`/cars/${car.name}`} key={car.id}>
               <div className={style.card} key={car.id}>
                 <h3>{car.name}</h3>
-                {/* {console.log(`../temp-img/${car.title}.jpg`)} */}
                 <p>{car.body_type}</p>
                 <p>{car.origin}</p>
                 <p>{car.year}</p>
                 <img
-                  src={require(`../temp-img/${car.title}.jpg`)}
+                  src={require(`../img/cars/${car.title}.jpg`)}
                   alt={car.name}
                   style={{ width: '200px' }}
                 />
