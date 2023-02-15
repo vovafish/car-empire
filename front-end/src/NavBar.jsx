@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 //import { AiOutlineLogin } from 'react-icons/ai';
 import style from './styles/layout/NavBar.module.scss';
-//import Dropdown from 'react-bootstrap/Dropdown';
 import logo from './img/logo.png';
 
 const NavBar = () => {

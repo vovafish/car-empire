@@ -1,16 +1,19 @@
+@import '../abstracts/variables';
+
 nav {
 	height: 200px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: #1e3442;
+	background-color: $text-color;
+	position: fixed;
+	width: 100%;
 	.logoSite {
 		position: absolute;
 		left: 10px;
 
 		img {
 			width: 200px;
-			/* filter: drop-shadow(5px 5px 5px #666666); */
 			border-radius: 30px;
 		}
 	}
@@ -21,13 +24,8 @@ nav {
 		justify-content: space-evenly;
 
 		li a {
-			color: #2EA6D3;
+			color: $primary-color;
 		}
-	}
-
-	.extra {
-
-		
 	}
 
 	.dropdownBasic {
@@ -35,7 +33,7 @@ nav {
 		border: none;
 	}
 	svg {
-		color: #2EA6D3; 
+		color: $primary-color; 
 	}
 
 }

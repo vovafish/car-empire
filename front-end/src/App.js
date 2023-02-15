@@ -11,6 +11,7 @@ import PolicyPage from './pages/PolicyPage';
 import CarPage from './pages/CarPage';
 import CarListPage from './pages/CarsListPage';
 import NavBar from './NavBar';
+import Footer from './Footer';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
+        <Footer />
       </div>
     </BrowserRouter>
   );
