@@ -12,8 +12,8 @@ const ReturnOfVehiclePage = () => {
       .sendForm(
         'service_8lfvu6w',
         'template_e7yl9tj',
-        form.current
-        //'OobbSW-DHtFMhWbqK'
+        form.current,
+        'OobbSW-DHtFMhWbqK'
       )
       .then(
         (result) => {
