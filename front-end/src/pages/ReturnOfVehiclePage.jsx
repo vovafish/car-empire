@@ -25,7 +25,7 @@ const ReturnOfVehiclePage = () => {
       );
   };
   return (
-    <div className="mainCotainer">
+    <div className="mainContainer">
       <main>
         <h1>Return of Vehucle Page</h1>
         <form ref={form} onSubmit={sendEmail} className={style.form}>

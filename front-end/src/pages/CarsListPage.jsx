@@ -17,7 +17,7 @@ const CarsListPage = () => {
   }, []);
 
   return (
-    <div className="mainCotainer">
+    <div className="mainContainer">
       <main className={style.main}>
         <h1>Cars</h1>
         <div className={style.container}>

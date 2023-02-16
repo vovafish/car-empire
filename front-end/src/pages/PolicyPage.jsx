@@ -2,7 +2,7 @@ import style from './PolicyPage.module.scss';
 
 const PolicyPage = () => {
   return (
-    <main className="mainCotainer">
+    <main className="mainContainer">
       <h1 className="main-title">Privacy Policy</h1>
       <p>Last updated: January 30, 2023</p>
       <p>

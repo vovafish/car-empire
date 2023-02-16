@@ -2,7 +2,7 @@ import style from './AboutPage.module.scss';
 
 const AboutPage = () => {
   return (
-    <div className="mainCotainer">
+    <div className="mainContainer">
       <main>
         <div className="main-title">
           <h1>Welcome to Car Empire</h1>
