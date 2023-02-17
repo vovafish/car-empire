@@ -13,6 +13,7 @@ import CarListPage from './pages/CarsListPage';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import NotFoundPage from './pages/NotFoundPage';
+import { PrivateRoute } from './auth/PrivateRoute';
 
 function App() {
   return (
@@ -30,7 +31,14 @@ function App() {
             <Route path="/additional-item" element={<AdditionalItemPage />} />
             <Route path="/return-vehicle" element={<ReturnOfVehiclePage />} />
             <Route path="/policy" element={<PolicyPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
+            <Route
+              path="/profile"
+              element={
+                <PrivateRoute>
+                  <ProfilePage />
+                </PrivateRoute>
+              }
+            />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>

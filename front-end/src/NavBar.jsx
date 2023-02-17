@@ -27,6 +27,8 @@ const NavBar = () => {
         </li>
       </ul>
       <div>
+        <Link to="/login">LogIn</Link>
+
         {/*  <select>
           <option value="Login">
             <Link to="/login">Login</Link>
