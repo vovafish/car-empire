@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom';
 import style from './ProfilePage.module.scss';
-import users from './user-content';
 
 const ProfilePage = () => {
   return (
