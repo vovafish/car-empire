@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useToken } from '../auth/useToken';
 import style from '../pages/SignUpPage.module.scss';
 
 const SignUpPage = () => {
+  const [token, setToken] = useToken();
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
   const [confirmPasswordValue, setConfirmPasswordValue] = useState('');
@@ -11,7 +14,14 @@ const SignUpPage = () => {
   const navigate = useNavigate();
 
   const onSignUpClicked = async () => {
-    alert('SignUp');
+    const response = await axios.post('/api/signup', {
+      email: emailValue,
+      password: passwordValue,
+    });
+
+    const { token } = response.data;
+    setToken(token);
+    navigate('/');
   };
   return (
     <div className="mainContainer">
@@ -40,7 +50,7 @@ const SignUpPage = () => {
             disabled={
               !emailValue ||
               !passwordValue ||
-              !passwordValue !== confirmPasswordValue
+              passwordValue !== confirmPasswordValue
             }
             onClick={onSignUpClicked}
           >
