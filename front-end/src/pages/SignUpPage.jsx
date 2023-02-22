@@ -6,6 +6,9 @@ import style from '../pages/SignUpPage.module.scss';
 
 const SignUpPage = () => {
   const [token, setToken] = useToken();
+  const [firstNameValue, setFirstNameValue] = useState('');
+  const [lastNameValue, setLastNameValue] = useState('');
+  const [numberValue, setNumberValue] = useState('');
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
   const [confirmPasswordValue, setConfirmPasswordValue] = useState('');
@@ -15,6 +18,9 @@ const SignUpPage = () => {
 
   const onSignUpClicked = async () => {
     const response = await axios.post('/api/signup', {
+      first_name: firstNameValue,
+      last_name: lastNameValue,
+      phone_number: numberValue,
       email: emailValue,
       password: passwordValue,
     });
@@ -30,25 +36,49 @@ const SignUpPage = () => {
         {errorMessage && <div className="fail">{errorMessage}</div>}
         <div className={style.form}>
           <input
+            value={firstNameValue}
+            onChange={(e) => setFirstNameValue(e.target.value)}
+            placeholder="Your first name"
+            required
+          />
+          <input
+            value={lastNameValue}
+            onChange={(e) => setLastNameValue(e.target.value)}
+            placeholder="Your last name"
+            required
+          />
+          <input
+            value={numberValue}
+            onChange={(e) => setNumberValue(e.target.value)}
+            type="tel"
+            pattern="[\+0-9\(\)\s-]{10,20}"
+            placeholder="01234 567890 (optional)"
+          />
+          <input
             value={emailValue}
             onChange={(e) => setEmailValue(e.target.value)}
             placeholder="someone@gmail.com"
+            required
           />
           <input
             value={passwordValue}
             onChange={(e) => setPasswordValue(e.target.value)}
             type="password"
             placeholder="password"
+            required
           />
           <input
             value={confirmPasswordValue}
             onChange={(e) => setConfirmPasswordValue(e.target.value)}
             type="password"
             placeholder="password"
+            required
           />
           <button
             disabled={
               !emailValue ||
+              !firstNameValue ||
+              !lastNameValue ||
               !passwordValue ||
               passwordValue !== confirmPasswordValue
             }

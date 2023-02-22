@@ -53,7 +53,7 @@ app.get('/api/cars', async (req, res) => {
 });
 
 app.post('/api/signup', async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, first_name, last_name, phone_number } = req.body;
   const user = await db.collection('users').findOne({ email });
 
   if (user) {
@@ -65,6 +65,9 @@ app.post('/api/signup', async (req, res) => {
 
   const result = await db.collection('users').insertOne({
     email,
+    first_name,
+    last_name,
+    phone_number,
     passwordHash,
     isVerified: false,
   });
@@ -75,6 +78,9 @@ app.post('/api/signup', async (req, res) => {
     {
       id: insertedId,
       email,
+      first_name,
+      last_name,
+      phone_number,
       isVerified: false,
     },
     process.env.JWT_SECRET,
@@ -97,13 +103,20 @@ app.post('/api/login', async (req, res) => {
 
   if (!user) res.sendStatus(401);
 
-  const { _id: id, isVerified, passwordHash } = user;
+  const {
+    _id: id,
+    first_name,
+    last_name,
+    phone_number,
+    isVerified,
+    passwordHash,
+  } = user;
 
   const isCorrect = await bcrypt.compare(password, passwordHash);
 
   if (isCorrect) {
     jwt.sign(
-      { id, isVerified, email },
+      { id, first_name, last_name, phone_number, isVerified, email },
       process.env.JWT_SECRET,
       {
         expiresIn: '2d',
