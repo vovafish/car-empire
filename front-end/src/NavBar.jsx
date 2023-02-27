@@ -1,9 +1,26 @@
 import { Link } from 'react-router-dom';
-//import { AiOutlineLogin } from 'react-icons/ai';
 import style from './styles/layout/NavBar.module.scss';
 import logo from './img/logo.png';
+import { useNavigate } from 'react-router-dom';
+import { useToken } from './auth/useToken';
 
 const NavBar = () => {
+  const [token, setToken] = useToken();
+  const navigate = useNavigate();
+
+  const logOut = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
+    /* window.location.reload();
+    return false; */
+  };
+
+  const logIn = () => {
+    navigate('/login');
+    /* window.location.reload();
+    return false; */
+  };
+  //console.log(token);
   return (
     <nav>
       <div className={style.logoSite}>
@@ -27,38 +44,11 @@ const NavBar = () => {
         </li>
       </ul>
       <div>
-        <Link to="/login">LogIn</Link>
-
-        {/*  <select>
-          <option value="Login">
-            <Link to="/login">Login</Link>
-          </option>
-          <option value="SignUp">
-            <Link to="/signup">SignUp</Link>
-          </option>
-          <option value="Profile">
-            <Link to="/profile">Profile</Link>
-          </option>
-          <option value="Logout">
-            <Link to="#">SignUp</Link>
-          </option>
-        </select> */}
-        {/* <Dropdown>
-          <Dropdown.Toggle
-            variant="success"
-            id="dropdown-basic"
-            className={style.dropdownBasic}
-          >
-            <AiOutlineLogin />
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            <Dropdown.Item href="#">Login</Dropdown.Item>
-            <Dropdown.Item href="#">SignUp</Dropdown.Item>
-            <Dropdown.Item href="#">Profile</Dropdown.Item>
-            <Dropdown.Item href="#">Logout</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown> */}
+        {token ? (
+          <button onClick={logOut}>Logout</button>
+        ) : (
+          <button onClick={logIn}>Login</button>
+        )}
       </div>
     </nav>
   );

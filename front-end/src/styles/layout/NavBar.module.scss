@@ -28,7 +28,11 @@ nav {
 		}
 	}
 
-	div a {
+	div button {
+		border: none;
+		cursor: pointer;
+		//padding: 0;
+		background: transparent;
 		color: $primary-color;
 	}
 
