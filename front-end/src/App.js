@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import SignUpPage from './pages/SignUpPage';
 import ProfilePage from './pages/ProfilePage';
 import HomePage from './pages/HomePage';
@@ -14,6 +15,7 @@ import NavBar from './NavBar';
 import Footer from './Footer';
 import NotFoundPage from './pages/NotFoundPage';
 import { PrivateRoute } from './auth/PrivateRoute';
+import { PleaseVerifyEamilPage } from './pages/PleaseVerifyEmailPage';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="/please-verify" element={<PleaseVerifyEamilPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/cars" element={<CarListPage />} />
             <Route path="/cars/:carId" element={<CarPage />} />

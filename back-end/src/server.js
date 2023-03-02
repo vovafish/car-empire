@@ -10,6 +10,10 @@ import path from 'path';
 import 'dotenv/config';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+import { sendEmail } from './util/sendEmail.js';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import { v4 as uuid } from 'uuid';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,7 +22,8 @@ const __dirname = path.dirname(__filename);
 const app = express();
 /* This code is used to enable Express to parse incoming request bodies that are in the JSON format. It is used to access the data sent by the client in a POST request. */
 app.use(express.json());
-
+app.use(bodyParser.json());
+app.use(cors());
 app.use(express.static(path.join(__dirname, '../build')));
 
 //handles all the routes that dont start with api
@@ -63,6 +68,8 @@ app.post('/api/signup', async (req, res) => {
   //hash password with 10 iterations
   const passwordHash = await bcrypt.hash(password, 10);
 
+  const verificationString = uuid();
+
   const result = await db.collection('users').insertOne({
     email,
     first_name,
@@ -70,9 +77,25 @@ app.post('/api/signup', async (req, res) => {
     phone_number,
     passwordHash,
     isVerified: false,
+    verificationString,
   });
 
   const { insertedId } = result;
+
+  try {
+    await sendEmail({
+      to: email,
+      from: 'vladimirrybakov123@gmail.com',
+      subject: 'Please verify your email',
+      text: `
+        Thanks for signing up! To verify your email, click here: 
+        http://localhost:3000/verify-email/${verificationString}
+      `,
+    });
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
+  }
 
   jwt.sign(
     {
@@ -131,6 +154,21 @@ app.post('/api/login', async (req, res) => {
     );
   } else {
     res.sendStatus(401);
+  }
+});
+
+app.post('/api/test-email', async (req, res) => {
+  try {
+    await sendEmail({
+      to: 'vladimirrybakov123+test1@gmail.com',
+      from: 'vladimirrybakov123@gmail.com',
+      subject: 'Account verification',
+      text: 'Verified',
+    });
+    res.sendStatus(200);
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
   }
 });
 
