@@ -14,6 +14,7 @@ import { sendEmail } from './util/sendEmail.js';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import { v4 as uuid } from 'uuid';
+import { ObjectID } from 'mongodb';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -170,6 +171,36 @@ app.post('/api/test-email', async (req, res) => {
     console.log(e);
     res.sendStatus(500);
   }
+});
+
+app.put('/api/verify-email', async (req, res) => {
+  const { verificationString } = req.body;
+  const result = await db.collection('users').findOne({
+    verificationString,
+  });
+
+  if (!result)
+    return res
+      .status(401)
+      .json({ message: 'The email verification code is not correct!' });
+
+  const { _id: id, email } = result;
+
+  await db
+    .collection('users')
+    .updateOne({ _id: ObjectID(id) }, { $set: { isVerified: true } });
+
+  jwt.sign(
+    { id, email, isVerified: true },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: '2d',
+    },
+    (err, token) => {
+      if (err) return res.sendStatus(500);
+      res.status(200).json({ token });
+    }
+  );
 });
 
 const PORT = process.env.PORT || 8000;

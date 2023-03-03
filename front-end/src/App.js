@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { EmailVerificationLandingPage } from './pages/EmailVerificationLandingPage';
 import LoginPage from './pages/LoginPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import SignUpPage from './pages/SignUpPage';
@@ -25,6 +26,10 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route
+              path="verify-email/:verificationString"
+              element={<EmailVerificationLandingPage />}
+            />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
