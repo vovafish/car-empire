@@ -214,6 +214,26 @@ app.put('/api/forgot-password/:email', async (req, res) => {
   res.sendStatus(200);
 });
 
+app.put('/api/users/:passwordResetCode/reset-password', async (req, res) => {
+  const { passwordResetCode } = req.params;
+  const { newPassword } = req.body;
+
+  const newPasswordHash = await bcrypt.hash(newPassword, 10);
+
+  const result = await db.collection('users').findOneAndUpdate(
+    { passwordResetCode },
+    {
+      $set: { passwordHash: newPasswordHash },
+      $unset: { passwordResetCode: '' },
+    }
+  );
+
+  console.log(result);
+  if (result.lastErrorObject.n === 0) return res.sendStatus(404);
+
+  res.sendStatus(200);
+});
+
 const PORT = process.env.PORT || 8000;
 
 /* If connection if successful to the database then output releated message and say what port running on */
