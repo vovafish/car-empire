@@ -23,8 +23,8 @@ const __dirname = path.dirname(__filename);
 const app = express();
 /* This code is used to enable Express to parse incoming request bodies that are in the JSON format. It is used to access the data sent by the client in a POST request. */
 app.use(express.json());
-app.use(bodyParser.json());
-app.use(cors());
+/* app.use(bodyParser.json());
+app.use(cors()); */
 app.use(express.static(path.join(__dirname, '../build')));
 
 //handles all the routes that dont start with api
@@ -158,21 +158,6 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-app.post('/api/test-email', async (req, res) => {
-  try {
-    await sendEmail({
-      to: 'vladimirrybakov123+test1@gmail.com',
-      from: 'vladimirrybakov123@gmail.com',
-      subject: 'Account verification',
-      text: 'Verified',
-    });
-    res.sendStatus(200);
-  } catch (e) {
-    console.log(e);
-    res.sendStatus(500);
-  }
-});
-
 app.put('/api/verify-email', async (req, res) => {
   const { verificationString } = req.body;
   const result = await db.collection('users').findOne({
@@ -201,6 +186,32 @@ app.put('/api/verify-email', async (req, res) => {
       res.status(200).json({ token });
     }
   );
+});
+
+app.put('/api/forgot-password/:email', async (req, res) => {
+  const { email } = req.params;
+  const passwordResetCode = uuid();
+  const result = await db
+    .collection('users')
+    .updateOne({ email }, { $set: { passwordResetCode } });
+
+  if (result.modifiedCount > 0) {
+    try {
+      await sendEmail({
+        to: email,
+        from: 'vladimirrybakov123@gmail.com',
+        subject: 'Password Reset',
+        text: `To reset your password, click this link:
+          http://localhost:3000/reset-password/${passwordResetCode}
+        `,
+      });
+    } catch (e) {
+      console.log(e);
+      res.sendStatus(500);
+    }
+  }
+
+  res.sendStatus(200);
 });
 
 const PORT = process.env.PORT || 8000;

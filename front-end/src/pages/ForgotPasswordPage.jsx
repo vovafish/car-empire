@@ -4,7 +4,7 @@ import axios from 'axios';
 import style from './ForgotPasswordPage.module.scss';
 
 const ForgotPasswordPage = () => {
-  const [errorMessage, setErrorMessageE] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const [success, setSuccess] = useState(false);
   const [emailValue, setEmailValue] = useState('');
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const ForgotPasswordPage = () => {
         navigate('/login');
       }, 3000);
     } catch (e) {
-      setErrorMessageE(e.message);
+      setErrorMessage(e.message);
     }
   };
 
