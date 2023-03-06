@@ -17,6 +17,7 @@ import Footer from './Footer';
 import NotFoundPage from './pages/NotFoundPage';
 import { PrivateRoute } from './auth/PrivateRoute';
 import { PleaseVerifyEamilPage } from './pages/PleaseVerifyEmailPage';
+import { PasswordResetLandingPage } from './pages/PasswordResetLandingPage';
 
 function App() {
   return (
@@ -33,6 +34,10 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+            <Route
+              path="/reset-password/:passwordResetCode"
+              element={<PasswordResetLandingPage />}
+            />
             <Route path="/please-verify" element={<PleaseVerifyEamilPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/cars" element={<CarListPage />} />
