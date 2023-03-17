@@ -6,6 +6,7 @@
 /.pnp
 .pnp.js
 
+
 # testing
 /coverage
 
@@ -20,6 +21,8 @@
 .env.test.local
 .env.production.local
 .env
+app.yaml
+prod-env.yaml
 
 
 npm-debug.log*
