@@ -28,7 +28,7 @@ app.use(cors()); */
 app.use(express.static(path.join(__dirname, '../build')));
 
 //handles all the routes that dont start with api
-app.get(/^(?!\/a).+/, (req, res) => {
+app.get(/^(?!\/api).+/, (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'));
 });
 
@@ -239,7 +239,7 @@ const PORT = process.env.PORT || 8000;
 /* If connection if successful to the database then output releated message and say what port running on */
 connectToDb(() => {
   console.log('Successfully connected to database!');
-  app.listen(8000, () => {
+  app.listen(PORT, () => {
     console.log('Server is listening on port ' + PORT);
   });
 });
