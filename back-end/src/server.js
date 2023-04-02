@@ -45,6 +45,17 @@ app.get('/api/cars/:name', async (req, res) => {
   }
 });
 
+app.delete('/api/cars/:name', async (req, res) => {
+  const { name } = req.params;
+
+  const car = await db.collection('cars').deleteOne({ name });
+
+  if (car) {
+    res.json(car);
+  } else {
+    res.sendStatus(404);
+  }
+});
 /* 
 This code is an Express.js route handler that retrieves all cars from a database. It uses the MongoDB find() method to query the 'cars' collection and convert the result to an array. The cars are then logged to the console and sent as a JSON response if they exist, or a 404 status code if not.
  */
@@ -90,9 +101,10 @@ app.post('/api/signup', async (req, res) => {
       subject: 'Please verify your email',
       text: `
         Thanks for signing up! To verify your email, click here: 
-        https://car-empire-380115.nw.r.appspot.com/verify-email/${verificationString}
+        http://localhost:3000/verify-email/${verificationString}
       `,
       //http://localhost:3000/verify-email/${verificationString}
+      //https://car-empire-380115.nw.r.appspot.com/verify-email/${verificationString}
     });
   } catch (e) {
     console.log(e);
@@ -203,9 +215,10 @@ app.put('/api/forgot-password/:email', async (req, res) => {
         from: 'vladimirrybakov123@gmail.com',
         subject: 'Password Reset',
         text: `To reset your password, click this link:
-        https://car-empire-380115.nw.r.appspot.com/reset-password/${passwordResetCode}
+        http://localhost:3000/reset-password/${passwordResetCode}
         `,
         //http://localhost:3000/reset-password/${passwordResetCode}
+        //https://car-empire-380115.nw.r.appspot.com/reset-password/${passwordResetCode}
       });
     } catch (e) {
       console.log(e);

@@ -1,0 +1,20 @@
+
+
+form {
+    height: 400px;
+    width: 400px;
+}
+form div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 60px;
+}
+
+form div input, textarea {
+    margin-top: 10px;
+}
+
+form div textarea {
+    resize: vertical;
+}

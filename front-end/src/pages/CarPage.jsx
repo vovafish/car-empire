@@ -6,24 +6,24 @@ NotFoundPage page
 Styling file
 */
 import { useState, useEffect, useRef } from 'react';
-
+import Modal from 'react-modal';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import NotFoundPage from './NotFoundPage';
 import emailjs from '@emailjs/browser';
-//import style from './CarPage.module.scss';
+import style from './CarPage.module.scss';
 
 const CarPage = () => {
   //making vars to track state of carInfo (API response from mongodb)
   const [carInfo, setCarInfo] = useState();
-  const [showForm, setShowForm] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   //to access the carID of each car object
   const { carId } = useParams();
 
   const form = useRef();
 
   const handlePurchase = () => {
-    setShowForm(true);
+    setModalIsOpen(true);
   };
 
   const sendEmail = (e) => {
@@ -44,6 +44,29 @@ const CarPage = () => {
           console.log(error.text);
         }
       );
+  };
+
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      padding: '21px',
+      backgroundColor: 'azure',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`/api/cars/${carInfo.name}`);
+      // Reload the page to update the list of cars
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   /* 
@@ -82,39 +105,40 @@ const CarPage = () => {
           style={{ width: '200px' }}
         />
         <button onClick={handlePurchase}>Buy</button>
-        {showForm && (
-          <div>
-            <form ref={form} onSubmit={sendEmail}>
-              <div>
-                <label>Name</label>
-                <input type="text" name="user_name" />
-              </div>
-              <div>
-                <label>Email</label>
-                <input type="email" name="user_email" />
-              </div>
-              <div>
-                <label>Message</label>
-                <textarea name="message" />
-              </div>
-              <div>
-                <label>Car</label>
-                <input name="car" placeholder={carInfo.name} />
-              </div>
-              <div>
-                <label>Car</label>
-                <input
-                  name="price"
-                  placeholder={carInfo.price}
-                  readOnly={true}
-                />
-              </div>
-              <div>
-                <input type="submit" value="Send" />
-              </div>
-            </form>
-          </div>
-        )}
+        <Modal
+          isOpen={modalIsOpen}
+          ariaHideApp={false}
+          className={style.modal}
+          style={customStyles}
+        >
+          <button onClick={() => setModalIsOpen(false)}>X</button>
+          <form ref={form} onSubmit={sendEmail}>
+            <div>
+              <label>Name</label>
+              <input type="text" name="user_name" />
+            </div>
+            <div>
+              <label>Email</label>
+              <input type="email" name="user_email" />
+            </div>
+            <div>
+              <label>Message</label>
+              <textarea name="message" />
+            </div>
+            <div>
+              <label>Car</label>
+              <input name="car" placeholder={carInfo.name} readOnly={true} />
+            </div>
+            <div>
+              <label>Car</label>
+              <input name="price" placeholder={carInfo.price} readOnly={true} />
+            </div>
+            <div>
+              <input type="submit" value="Send" />
+            </div>
+          </form>
+        </Modal>
+        <button onClick={handleDelete}>Delete</button>
       </div>
     </div>
   );
