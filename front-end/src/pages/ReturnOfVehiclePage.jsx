@@ -30,16 +30,16 @@ const ReturnOfVehiclePage = () => {
         <h1>Return of Vehucle Page</h1>
         <form ref={form} onSubmit={sendEmail} className={style.form}>
           <div>
-            <label>Name</label>
-            <input type="text" name="user_name" />
+            <label for="name">Name</label>
+            <input type="text" name="user_name" id="name" />
           </div>
           <div>
-            <label>Email</label>
-            <input type="email" name="user_email" />
+            <label for="email">Email</label>
+            <input type="email" name="user_email" id="email" />
           </div>
           <div>
-            <label>Message</label>
-            <textarea name="message" />
+            <label for="message">Message</label>
+            <textarea name="message" id="message" />
           </div>
           <div>
             <input type="submit" value="Send" />

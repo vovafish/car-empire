@@ -71,7 +71,7 @@ const SignUpPage = () => {
             value={confirmPasswordValue}
             onChange={(e) => setConfirmPasswordValue(e.target.value)}
             type="password"
-            placeholder="password"
+            placeholder="Confirm password"
             required
           />
           <button

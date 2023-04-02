@@ -90,8 +90,9 @@ app.post('/api/signup', async (req, res) => {
       subject: 'Please verify your email',
       text: `
         Thanks for signing up! To verify your email, click here: 
-        http://localhost:3000/verify-email/${verificationString}
+        https://car-empire-380115.nw.r.appspot.com/verify-email/${verificationString}
       `,
+      //http://localhost:3000/verify-email/${verificationString}
     });
   } catch (e) {
     console.log(e);
@@ -202,8 +203,9 @@ app.put('/api/forgot-password/:email', async (req, res) => {
         from: 'vladimirrybakov123@gmail.com',
         subject: 'Password Reset',
         text: `To reset your password, click this link:
-          http://localhost:3000/reset-password/${passwordResetCode}
+        https://car-empire-380115.nw.r.appspot.com/reset-password/${passwordResetCode}
         `,
+        //http://localhost:3000/reset-password/${passwordResetCode}
       });
     } catch (e) {
       console.log(e);
