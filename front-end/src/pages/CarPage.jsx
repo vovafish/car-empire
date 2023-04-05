@@ -89,6 +89,8 @@ const CarPage = () => {
     return <NotFoundPage />;
   }
 
+  let image =
+    'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80';
   /* Creating the HTML that will be displayed when navigate to the CarPage */
   return (
     //creating main container
@@ -100,7 +102,9 @@ const CarPage = () => {
         <p>Color: {carInfo.colour}</p>
         <p>Gearbox type: {carInfo.gearbox}</p>
         <img
-          src={require(`../img/cars/${carInfo.title}.jpg`)}
+          //  src={image ? image : require(`../img/cars/${carInfo.title}.jpg`)}
+          //src={require(`../img/cars/${carInfo.title}.jpg`)}
+          src={image ? image : require(`../img/cars/${carInfo.title}.jpg`)}
           alt={carInfo.name}
           style={{ width: '200px' }}
         />

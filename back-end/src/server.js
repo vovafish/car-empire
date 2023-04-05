@@ -56,6 +56,7 @@ app.delete('/api/cars/:name', async (req, res) => {
     res.sendStatus(404);
   }
 });
+
 /* 
 This code is an Express.js route handler that retrieves all cars from a database. It uses the MongoDB find() method to query the 'cars' collection and convert the result to an array. The cars are then logged to the console and sent as a JSON response if they exist, or a 404 status code if not.
  */
@@ -67,6 +68,50 @@ app.get('/api/cars', async (req, res) => {
   } else {
     res.sendStatus(404);
   }
+});
+
+app.post('/api/cars', async (req, res) => {
+  const {
+    name,
+    title,
+    year,
+    origin,
+    weight,
+    mileage,
+    gearbox,
+    fuel_type,
+    colour,
+    body_type,
+    engine_size,
+    doors,
+    seats,
+    acceleration,
+    fuel_consumption,
+    description,
+    price,
+    image,
+  } = req.body;
+
+  const result = await db.collection('cars').insertOne({
+    name,
+    title,
+    year,
+    origin,
+    weight,
+    mileage,
+    gearbox,
+    fuel_type,
+    colour,
+    body_type,
+    engine_size,
+    doors,
+    seats,
+    acceleration,
+    fuel_consumption,
+    description,
+    price,
+    image,
+  });
 });
 
 app.post('/api/signup', async (req, res) => {
