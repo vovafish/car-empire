@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useUser } from '../auth/useUser';
 import Modal from 'react-modal';
 import axios from 'axios';
 import style from './CarsListPage.module.scss';
@@ -8,11 +9,6 @@ const CarsListPage = () => {
   const [carsInfo, setCarsInfo] = useState([]);
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  /* 
-    fuel_type, colour,body_type,
-    engine_size,doors,seats,acceleration,fuel_consumption,description,
-    price,*/
 
   const [nameValue, setNameValue] = useState('');
   const [titleValue, setTitleValue] = useState('');
@@ -33,6 +29,7 @@ const CarsListPage = () => {
   const [priceValue, setPriceValue] = useState('');
   const [imageValue, setImageValue] = useState('');
 
+  const user = useUser();
   useEffect(() => {
     const loadCarsInfo = async () => {
       const response = await axios.get('/api/cars');
@@ -55,12 +52,9 @@ const CarsListPage = () => {
     },
   };
 
-  const insertCar = (e) => {
-    //
-  };
-
   const onInsertCar = async () => {
-    const response = await axios.post('/api/cars', {
+    setModalIsOpen(false);
+    await axios.post('/api/cars', {
       name: nameValue,
       title: titleValue,
       year: yearValue,
@@ -80,9 +74,6 @@ const CarsListPage = () => {
       price: priceValue,
       image: imageValue,
     });
-
-    /* const { token } = response.data;
-    setToken(token); */
   };
 
   const handleInsert = () => {
@@ -93,124 +84,211 @@ const CarsListPage = () => {
     <div className="mainContainer">
       <main className={style.main}>
         <h1>Cars</h1>
-        <button onClick={handleInsert}>Insert</button>
+        {user.isAdmin && <button onClick={handleInsert}>Insert</button>}
         <Modal
           isOpen={modalIsOpen}
           ariaHideApp={false}
           className={style.modal}
           style={customStyles}
         >
-          <button onClick={() => setModalIsOpen(false)}>X</button>
+          <button className={style.btn} onClick={() => setModalIsOpen(false)}>
+            X
+          </button>
           <div className={style.insertForm}>
-            <input
-              value={nameValue}
-              onChange={(e) => setNameValue(e.target.value)}
-              placeholder=""
-              required
-            />
-            <input
-              value={titleValue}
-              onChange={(e) => setTitleValue(e.target.value)}
-              placeholder=""
-              required
-            />
-            <input
-              value={yearValue}
-              onChange={(e) => setYearValue(e.target.value)}
-              placeholder=""
-            />
-            <input
-              value={originValue}
-              onChange={(e) => setOriginValue(e.target.value)}
-              placeholder=""
-              required
-            />
-            <input
-              value={weightValue}
-              onChange={(e) => setWeightValue(e.target.value)}
-              placeholder=""
-              required
-            />
-            <input
-              value={mileageValue}
-              onChange={(e) => setMileageValue(e.target.value)}
-              placeholder=""
-              required
-            />
-            <input
-              value={gearboxValue}
-              onChange={(e) => setGearboxValue(e.target.value)}
-              placeholder=""
-              required
-            />
-            <input
-              value={fuelTypeValue}
-              onChange={(e) => setFuelTypeValue(e.target.value)}
-              placeholder=""
-              required
-            />
-            <input
-              value={colourValue}
-              onChange={(e) => setColourValue(e.target.value)}
-              placeholder=""
-              required
-            />
-            <input
-              value={bodyTypeValue}
-              onChange={(e) => setBodyTypeValue(e.target.value)}
-              placeholder=""
-              required
-            />
-            <input
-              value={engineSizeValue}
-              onChange={(e) => setEngineSizeValue(e.target.value)}
-              placeholder=""
-              required
-            />
-            <input
-              value={doorsValue}
-              onChange={(e) => setDoorsValue(e.target.value)}
-              placeholder=""
-              required
-            />
-            <input
-              value={seatsValue}
-              onChange={(e) => setSeatsValue(e.target.value)}
-              placeholder=""
-              required
-            />
-            <input
-              value={accelerationValue}
-              onChange={(e) => setAccelerationValue(e.target.value)}
-              placeholder=""
-              required
-            />
-            <input
-              value={fuelConsumptionValue}
-              onChange={(e) => setFuelConsumptionValue(e.target.value)}
-              placeholder=""
-              required
-            />
-            <input
-              value={descriptionValue}
-              onChange={(e) => setDescriptionValue(e.target.value)}
-              placeholder=""
-              required
-            />
-            <input
-              value={priceValue}
-              onChange={(e) => setPriceValue(e.target.value)}
-              placeholder=""
-              required
-            />
-            <input
-              value={imageValue}
-              onChange={(e) => setImageValue(e.target.value)}
-              placeholder=""
-              required
-            />
-            <button onClick={onInsertCar}>Add new car</button>
+            <div className={style.column}>
+              <div className={style.field}>
+                <label>Name</label>
+                <input
+                  value={nameValue}
+                  onChange={(e) => setNameValue(e.target.value)}
+                  placeholder=""
+                  required
+                />
+              </div>
+              <div className={style.field}>
+                <label>Title</label>
+                <input
+                  value={titleValue}
+                  onChange={(e) => setTitleValue(e.target.value)}
+                  placeholder=""
+                  required
+                />
+              </div>
+              <div className={style.field}>
+                <label>Year</label>
+                <input
+                  value={yearValue}
+                  onChange={(e) => setYearValue(e.target.value)}
+                  placeholder=""
+                />
+              </div>
+              <div className={style.field}>
+                <label>Origin</label>
+                <input
+                  value={originValue}
+                  onChange={(e) => setOriginValue(e.target.value)}
+                  placeholder=""
+                  required
+                />
+              </div>
+              <div className={style.field}>
+                <label>Weight</label>
+                <input
+                  value={weightValue}
+                  onChange={(e) => setWeightValue(e.target.value)}
+                  placeholder=""
+                  required
+                />
+              </div>
+              <div className={style.field}>
+                <label>Mileage</label>
+                <input
+                  value={mileageValue}
+                  onChange={(e) => setMileageValue(e.target.value)}
+                  placeholder=""
+                  required
+                />
+              </div>
+            </div>
+            <div className={style.column}>
+              <div className={style.field}>
+                <label>Gearbox</label>
+                <input
+                  value={gearboxValue}
+                  onChange={(e) => setGearboxValue(e.target.value)}
+                  placeholder=""
+                  required
+                />
+              </div>
+              <div className={style.field}>
+                <label>Fuel Type</label>
+                <input
+                  value={fuelTypeValue}
+                  onChange={(e) => setFuelTypeValue(e.target.value)}
+                  placeholder=""
+                  required
+                />
+              </div>
+              <div className={style.field}>
+                <label>Colour</label>
+                <input
+                  value={colourValue}
+                  onChange={(e) => setColourValue(e.target.value)}
+                  placeholder=""
+                  required
+                />
+              </div>
+              <div className={style.field}>
+                <label>Body Type</label>
+                <input
+                  value={bodyTypeValue}
+                  onChange={(e) => setBodyTypeValue(e.target.value)}
+                  placeholder=""
+                  required
+                />
+              </div>
+              <div className={style.field}>
+                <label>Engine Size</label>
+                <input
+                  value={engineSizeValue}
+                  onChange={(e) => setEngineSizeValue(e.target.value)}
+                  placeholder=""
+                  required
+                />
+              </div>
+              <div className={style.field}>
+                <label>Doors</label>
+                <input
+                  value={doorsValue}
+                  onChange={(e) => setDoorsValue(e.target.value)}
+                  placeholder=""
+                  required
+                />
+              </div>
+            </div>
+            <div className={style.column}>
+              <div className={style.field}>
+                <label>Seats</label>
+                <input
+                  value={seatsValue}
+                  onChange={(e) => setSeatsValue(e.target.value)}
+                  placeholder=""
+                  required
+                />
+              </div>
+              <div className={style.field}>
+                <label>Acceleration</label>
+                <input
+                  value={accelerationValue}
+                  onChange={(e) => setAccelerationValue(e.target.value)}
+                  placeholder=""
+                  required
+                />
+              </div>
+              <div className={style.field}>
+                <label>Fuel Consumption</label>
+                <input
+                  value={fuelConsumptionValue}
+                  onChange={(e) => setFuelConsumptionValue(e.target.value)}
+                  placeholder=""
+                  required
+                />
+              </div>
+              <div className={style.field}>
+                <label>Description</label>
+                <input
+                  value={descriptionValue}
+                  onChange={(e) => setDescriptionValue(e.target.value)}
+                  placeholder=""
+                  required
+                />
+              </div>
+              <div className={style.field}>
+                <label>Price</label>
+                <input
+                  value={priceValue}
+                  onChange={(e) => setPriceValue(e.target.value)}
+                  placeholder=""
+                  required
+                />
+              </div>
+              <div className={style.field}>
+                <label>Image</label>
+                <input
+                  value={imageValue}
+                  onChange={(e) => setImageValue(e.target.value)}
+                  placeholder=""
+                  required
+                />
+              </div>
+            </div>
           </div>
+          <button
+            className={style.btn}
+            onClick={onInsertCar}
+            disabled={
+              !nameValue ||
+              !titleValue ||
+              !yearValue ||
+              !originValue ||
+              !weightValue ||
+              !mileageValue ||
+              !gearboxValue ||
+              !fuelTypeValue ||
+              !colourValue ||
+              !bodyTypeValue ||
+              !engineSizeValue ||
+              !doorsValue ||
+              !seatsValue ||
+              !accelerationValue ||
+              !fuelConsumptionValue ||
+              !descriptionValue ||
+              !priceValue ||
+              !imageValue
+            }
+          >
+            Add new car
+          </button>
         </Modal>
         <div className={style.container}>
           {carsInfo.map((car) => (

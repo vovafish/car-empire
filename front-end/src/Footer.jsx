@@ -22,7 +22,7 @@ const Footer = () => {
       <div>
         <div>
           <span>
-            <Link>Our Policy and Privacy</Link>
+            <Link to="/policy">Our Policy and Privacy</Link>
           </span>
         </div>
         <div>

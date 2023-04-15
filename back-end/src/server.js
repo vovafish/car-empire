@@ -70,6 +70,10 @@ app.get('/api/cars', async (req, res) => {
   }
 });
 
+/* app.get('/api/cars', async (req, res) => {
+  const admin = await db.collection('users').find({ isAdmin: true });
+}); */
+
 app.post('/api/cars', async (req, res) => {
   const {
     name,
@@ -134,6 +138,7 @@ app.post('/api/signup', async (req, res) => {
     phone_number,
     passwordHash,
     isVerified: false,
+    isAdmin: false,
     verificationString,
   });
 
@@ -163,7 +168,7 @@ app.post('/api/signup', async (req, res) => {
       first_name,
       last_name,
       phone_number,
-      isVerified: false,
+      isAdmin: false,
     },
     process.env.JWT_SECRET,
     {
@@ -191,6 +196,7 @@ app.post('/api/login', async (req, res) => {
     last_name,
     phone_number,
     isVerified,
+    isAdmin,
     passwordHash,
   } = user;
 
@@ -198,7 +204,7 @@ app.post('/api/login', async (req, res) => {
 
   if (isCorrect) {
     jwt.sign(
-      { id, first_name, last_name, phone_number, isVerified, email },
+      { id, first_name, last_name, phone_number, isVerified, email, isAdmin },
       process.env.JWT_SECRET,
       {
         expiresIn: '2d',

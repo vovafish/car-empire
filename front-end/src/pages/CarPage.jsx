@@ -12,6 +12,7 @@ import axios from 'axios';
 import NotFoundPage from './NotFoundPage';
 import emailjs from '@emailjs/browser';
 import style from './CarPage.module.scss';
+import { useUser } from '../auth/useUser';
 
 const CarPage = () => {
   //making vars to track state of carInfo (API response from mongodb)
@@ -21,6 +22,8 @@ const CarPage = () => {
   const { carId } = useParams();
 
   const form = useRef();
+
+  const user = useUser();
 
   const handlePurchase = () => {
     setModalIsOpen(true);
@@ -89,8 +92,6 @@ const CarPage = () => {
     return <NotFoundPage />;
   }
 
-  let image =
-    'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80';
   /* Creating the HTML that will be displayed when navigate to the CarPage */
   return (
     //creating main container
@@ -101,10 +102,13 @@ const CarPage = () => {
       <div>
         <p>Color: {carInfo.colour}</p>
         <p>Gearbox type: {carInfo.gearbox}</p>
+        {console.log(carInfo.image)}
         <img
-          //  src={image ? image : require(`../img/cars/${carInfo.title}.jpg`)}
-          //src={require(`../img/cars/${carInfo.title}.jpg`)}
-          src={image ? image : require(`../img/cars/${carInfo.title}.jpg`)}
+          src={
+            carInfo.image
+              ? carInfo.image
+              : require(`../img/cars/${carInfo.title}.jpg`)
+          }
           alt={carInfo.name}
           style={{ width: '200px' }}
         />
@@ -142,7 +146,7 @@ const CarPage = () => {
             </div>
           </form>
         </Modal>
-        <button onClick={handleDelete}>Delete</button>
+        {user.isAdmin && <button onClick={handleDelete}>Delete</button>}
       </div>
     </div>
   );

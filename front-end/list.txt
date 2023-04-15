@@ -1,0 +1,4 @@
+1 make modal form close after submit or clean 
+2 close form returning of a vehicle
+3 think if I need home page or not
+4 make NotFoundPage looking good
