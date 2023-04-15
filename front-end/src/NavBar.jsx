@@ -8,22 +8,17 @@ import { useUser } from './auth/useUser';
 const NavBar = () => {
   const [token, setToken] = useToken();
   const navigate = useNavigate();
-
   const user = useUser();
 
   const logOut = () => {
     localStorage.removeItem('token');
     navigate('/login');
-    /* window.location.reload();
-    return false; */
   };
 
   const logIn = () => {
     navigate('/login');
-    /* window.location.reload();
-    return false; */
   };
-  //console.log(token);
+
   return (
     <nav className={style.nav}>
       <div className={style.logoSite}>
@@ -49,23 +44,21 @@ const NavBar = () => {
         </ul>
       </div>
       <div className={style.userActivity}>
-        <>
-          {token ? (
-            <>
-              <button className={style.button} onClick={logOut}>
-                Logout
-              </button>
-              <h3 className={style.user}>Hi, {user.first_name}</h3>
-            </>
-          ) : (
-            <>
-              <button className={style.button} onClick={logIn}>
-                Login
-              </button>
-              <h3 className={style.user}>Hi, customer</h3>
-            </>
-          )}
-        </>
+        {token ? (
+          <>
+            <button className={style.button} onClick={logOut}>
+              Logout
+            </button>
+            <h3 className={style.user}>Hi, {user.first_name}</h3>
+          </>
+        ) : (
+          <>
+            <button className={style.button} onClick={logIn}>
+              Login
+            </button>
+            <h3 className={style.user}>Hi, customer</h3>
+          </>
+        )}
       </div>
     </nav>
   );

@@ -1,3 +1,5 @@
+@import '../styles/abstracts/variables';
+
 .main {
     display: flex;
     flex-direction: column;
@@ -22,11 +24,25 @@
     width: 300px;
     justify-content: space-evenly;
     border: 1px solid black;
+    background-color: rgba($primary-color, 0.2);
+    
     border-radius: 5px;
     padding: 10px;
     flex-wrap: wrap;
     align-items: center;
     margin-bottom: 20px;
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    }
+}
+.card h3 {
+    font-weight: bold;
+}
+
+.card img {
+    border-radius: 20px;
 }
 .insertForm {
     display: flex;
@@ -46,4 +62,7 @@
     flex-direction: column;
     align-items: flex-start;
     margin-top: 5px;
+}
+.insert {
+    margin-bottom: 10px;
 }

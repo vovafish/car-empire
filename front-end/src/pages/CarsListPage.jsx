@@ -30,6 +30,8 @@ const CarsListPage = () => {
   const [imageValue, setImageValue] = useState('');
 
   const user = useUser();
+
+  console.log(user);
   useEffect(() => {
     const loadCarsInfo = async () => {
       const response = await axios.get('/api/cars');
@@ -83,8 +85,12 @@ const CarsListPage = () => {
   return (
     <div className="mainContainer">
       <main className={style.main}>
-        <h1>Cars</h1>
-        {user.isAdmin && <button onClick={handleInsert}>Insert</button>}
+        <h1 className="main-title">Cars</h1>
+        {user.isAdmin && (
+          <button className={style.insert} onClick={handleInsert}>
+            Insert
+          </button>
+        )}
         <Modal
           isOpen={modalIsOpen}
           ariaHideApp={false}
