@@ -1,5 +1,6 @@
 @import '../abstracts/variables';
 
+/*
 nav {
 	height: 200px;
 	display: flex;
@@ -44,4 +45,55 @@ nav {
 		color: $primary-color; 
 	}
 
+}
+*/
+.nav {
+	display: grid;
+	grid-template-columns: 20% 60% 20%;
+	height: 200px;
+	background-color: $text-color;
+	position: fixed;
+	width: 100%;
+	align-items: center;
+}
+
+.logoSite {
+	grid-column: 1;
+	margin-left: 10px;
+	
+}
+
+img {
+	width: 200px;
+	border-radius: 30px;
+}
+
+.links {
+	grid-column: 2
+}
+
+li a {
+
+	color: $primary-color;
+}
+
+.links ul {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.userActivity {
+	display: flex;
+	justify-content: space-around;
+	grid-column: 3
+} .user {
+	color: $primary-color;
+}
+
+.button {
+	border: none;
+	cursor: pointer;
+	background: transparent;
+	color: $primary-color;
+	font-size: inherit;
 }
