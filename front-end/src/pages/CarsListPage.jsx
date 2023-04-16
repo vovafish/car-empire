@@ -28,8 +28,15 @@ const CarsListPage = () => {
   const [descriptionValue, setDescriptionValue] = useState('');
   const [priceValue, setPriceValue] = useState('');
   const [imageValue, setImageValue] = useState('');
+  const [admin, setAdmin] = useState(false);
 
   const user = useUser();
+
+  /*  if (user === null) {
+    setAdmin(false);
+  } else {
+    setAdmin(true);
+  } */
 
   console.log(user);
   useEffect(() => {
@@ -87,7 +94,7 @@ const CarsListPage = () => {
       <div className="mainContainer">
         <main className={style.main}>
           <h1 className="main-title light">Cars</h1>
-          {user.isAdmin && (
+          {user && user.isAdmin && (
             <button className={style.insert} onClick={handleInsert}>
               Insert
             </button>

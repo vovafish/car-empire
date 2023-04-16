@@ -26,9 +26,9 @@ const NavBar = () => {
       </div>
       <div className={style.links}>
         <ul>
-          {/* <li>
+          <li>
             <Link to="/">Home</Link>
-          </li> */}
+          </li>
           <li>
             <Link to="/cars">Cars</Link>
           </li>

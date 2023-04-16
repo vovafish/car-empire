@@ -152,7 +152,7 @@ const CarPage = () => {
             </div>
           </form>
         </Modal>
-        {user.isAdmin && <button onClick={handleDelete}>Delete</button>}
+        {user && user.isAdmin && <button onClick={handleDelete}>Delete</button>}
       </div>
     </div>
   );
