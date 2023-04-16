@@ -80,12 +80,17 @@ li a {
 .links ul {
 	display: flex;
 	justify-content: space-evenly;
+	border-right: 2px solid black;
+    border-left: 2px solid black;
+    height: 50px;
+    align-items: center;
 }
 
 .userActivity {
 	display: flex;
 	justify-content: space-around;
-	grid-column: 3
+	grid-column: 3;
+	align-items: baseline;
 } .user {
 	color: $primary-color;
 }

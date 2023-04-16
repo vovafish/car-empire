@@ -83,242 +83,244 @@ const CarsListPage = () => {
   };
 
   return (
-    <div className="mainContainer">
-      <main className={style.main}>
-        <h1 className="main-title">Cars</h1>
-        {user.isAdmin && (
-          <button className={style.insert} onClick={handleInsert}>
-            Insert
-          </button>
-        )}
-        <Modal
-          isOpen={modalIsOpen}
-          ariaHideApp={false}
-          className={style.modal}
-          style={customStyles}
-        >
-          <button className={style.btn} onClick={() => setModalIsOpen(false)}>
-            X
-          </button>
-          <div className={style.insertForm}>
-            <div className={style.column}>
-              <div className={style.field}>
-                <label>Name</label>
-                <input
-                  value={nameValue}
-                  onChange={(e) => setNameValue(e.target.value)}
-                  placeholder=""
-                  required
-                />
-              </div>
-              <div className={style.field}>
-                <label>Title</label>
-                <input
-                  value={titleValue}
-                  onChange={(e) => setTitleValue(e.target.value)}
-                  placeholder=""
-                  required
-                />
-              </div>
-              <div className={style.field}>
-                <label>Year</label>
-                <input
-                  value={yearValue}
-                  onChange={(e) => setYearValue(e.target.value)}
-                  placeholder=""
-                />
-              </div>
-              <div className={style.field}>
-                <label>Origin</label>
-                <input
-                  value={originValue}
-                  onChange={(e) => setOriginValue(e.target.value)}
-                  placeholder=""
-                  required
-                />
-              </div>
-              <div className={style.field}>
-                <label>Weight</label>
-                <input
-                  value={weightValue}
-                  onChange={(e) => setWeightValue(e.target.value)}
-                  placeholder=""
-                  required
-                />
-              </div>
-              <div className={style.field}>
-                <label>Mileage</label>
-                <input
-                  value={mileageValue}
-                  onChange={(e) => setMileageValue(e.target.value)}
-                  placeholder=""
-                  required
-                />
-              </div>
-            </div>
-            <div className={style.column}>
-              <div className={style.field}>
-                <label>Gearbox</label>
-                <input
-                  value={gearboxValue}
-                  onChange={(e) => setGearboxValue(e.target.value)}
-                  placeholder=""
-                  required
-                />
-              </div>
-              <div className={style.field}>
-                <label>Fuel Type</label>
-                <input
-                  value={fuelTypeValue}
-                  onChange={(e) => setFuelTypeValue(e.target.value)}
-                  placeholder=""
-                  required
-                />
-              </div>
-              <div className={style.field}>
-                <label>Colour</label>
-                <input
-                  value={colourValue}
-                  onChange={(e) => setColourValue(e.target.value)}
-                  placeholder=""
-                  required
-                />
-              </div>
-              <div className={style.field}>
-                <label>Body Type</label>
-                <input
-                  value={bodyTypeValue}
-                  onChange={(e) => setBodyTypeValue(e.target.value)}
-                  placeholder=""
-                  required
-                />
-              </div>
-              <div className={style.field}>
-                <label>Engine Size</label>
-                <input
-                  value={engineSizeValue}
-                  onChange={(e) => setEngineSizeValue(e.target.value)}
-                  placeholder=""
-                  required
-                />
-              </div>
-              <div className={style.field}>
-                <label>Doors</label>
-                <input
-                  value={doorsValue}
-                  onChange={(e) => setDoorsValue(e.target.value)}
-                  placeholder=""
-                  required
-                />
-              </div>
-            </div>
-            <div className={style.column}>
-              <div className={style.field}>
-                <label>Seats</label>
-                <input
-                  value={seatsValue}
-                  onChange={(e) => setSeatsValue(e.target.value)}
-                  placeholder=""
-                  required
-                />
-              </div>
-              <div className={style.field}>
-                <label>Acceleration</label>
-                <input
-                  value={accelerationValue}
-                  onChange={(e) => setAccelerationValue(e.target.value)}
-                  placeholder=""
-                  required
-                />
-              </div>
-              <div className={style.field}>
-                <label>Fuel Consumption</label>
-                <input
-                  value={fuelConsumptionValue}
-                  onChange={(e) => setFuelConsumptionValue(e.target.value)}
-                  placeholder=""
-                  required
-                />
-              </div>
-              <div className={style.field}>
-                <label>Description</label>
-                <input
-                  value={descriptionValue}
-                  onChange={(e) => setDescriptionValue(e.target.value)}
-                  placeholder=""
-                  required
-                />
-              </div>
-              <div className={style.field}>
-                <label>Price</label>
-                <input
-                  value={priceValue}
-                  onChange={(e) => setPriceValue(e.target.value)}
-                  placeholder=""
-                  required
-                />
-              </div>
-              <div className={style.field}>
-                <label>Image</label>
-                <input
-                  value={imageValue}
-                  onChange={(e) => setImageValue(e.target.value)}
-                  placeholder=""
-                  required
-                />
-              </div>
-            </div>
-          </div>
-          <button
-            className={style.btn}
-            onClick={onInsertCar}
-            disabled={
-              !nameValue ||
-              !titleValue ||
-              !yearValue ||
-              !originValue ||
-              !weightValue ||
-              !mileageValue ||
-              !gearboxValue ||
-              !fuelTypeValue ||
-              !colourValue ||
-              !bodyTypeValue ||
-              !engineSizeValue ||
-              !doorsValue ||
-              !seatsValue ||
-              !accelerationValue ||
-              !fuelConsumptionValue ||
-              !descriptionValue ||
-              !priceValue ||
-              !imageValue
-            }
+    <div className={style.bg}>
+      <div className="mainContainer">
+        <main className={style.main}>
+          <h1 className="main-title light">Cars</h1>
+          {user.isAdmin && (
+            <button className={style.insert} onClick={handleInsert}>
+              Insert
+            </button>
+          )}
+          <Modal
+            isOpen={modalIsOpen}
+            ariaHideApp={false}
+            className={style.modal}
+            style={customStyles}
           >
-            Add new car
-          </button>
-        </Modal>
-        <div className={style.container}>
-          {carsInfo.map((car) => (
-            <Link to={`/cars/${car.name}`} key={car._id}>
-              <div className={style.card} key={car._id}>
-                <h3>{car.name}</h3>
-                <p>{car.body_type}</p>
-                <p>{car.origin}</p>
-                <p>{car.year}</p>
-                <img
-                  //src={require(`../img/cars/${car.title}.jpg`)}
-                  src={
-                    car.image
-                      ? car.image
-                      : require(`../img/cars/${car.title}.jpg`)
-                  }
-                  alt={car.name}
-                  style={{ width: '200px' }}
-                />
+            <button className={style.btn} onClick={() => setModalIsOpen(false)}>
+              X
+            </button>
+            <div className={style.insertForm}>
+              <div className={style.column}>
+                <div className={style.field}>
+                  <label>Name</label>
+                  <input
+                    value={nameValue}
+                    onChange={(e) => setNameValue(e.target.value)}
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div className={style.field}>
+                  <label>Title</label>
+                  <input
+                    value={titleValue}
+                    onChange={(e) => setTitleValue(e.target.value)}
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div className={style.field}>
+                  <label>Year</label>
+                  <input
+                    value={yearValue}
+                    onChange={(e) => setYearValue(e.target.value)}
+                    placeholder=""
+                  />
+                </div>
+                <div className={style.field}>
+                  <label>Origin</label>
+                  <input
+                    value={originValue}
+                    onChange={(e) => setOriginValue(e.target.value)}
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div className={style.field}>
+                  <label>Weight</label>
+                  <input
+                    value={weightValue}
+                    onChange={(e) => setWeightValue(e.target.value)}
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div className={style.field}>
+                  <label>Mileage</label>
+                  <input
+                    value={mileageValue}
+                    onChange={(e) => setMileageValue(e.target.value)}
+                    placeholder=""
+                    required
+                  />
+                </div>
               </div>
-            </Link>
-          ))}
-        </div>
-      </main>
+              <div className={style.column}>
+                <div className={style.field}>
+                  <label>Gearbox</label>
+                  <input
+                    value={gearboxValue}
+                    onChange={(e) => setGearboxValue(e.target.value)}
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div className={style.field}>
+                  <label>Fuel Type</label>
+                  <input
+                    value={fuelTypeValue}
+                    onChange={(e) => setFuelTypeValue(e.target.value)}
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div className={style.field}>
+                  <label>Colour</label>
+                  <input
+                    value={colourValue}
+                    onChange={(e) => setColourValue(e.target.value)}
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div className={style.field}>
+                  <label>Body Type</label>
+                  <input
+                    value={bodyTypeValue}
+                    onChange={(e) => setBodyTypeValue(e.target.value)}
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div className={style.field}>
+                  <label>Engine Size</label>
+                  <input
+                    value={engineSizeValue}
+                    onChange={(e) => setEngineSizeValue(e.target.value)}
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div className={style.field}>
+                  <label>Doors</label>
+                  <input
+                    value={doorsValue}
+                    onChange={(e) => setDoorsValue(e.target.value)}
+                    placeholder=""
+                    required
+                  />
+                </div>
+              </div>
+              <div className={style.column}>
+                <div className={style.field}>
+                  <label>Seats</label>
+                  <input
+                    value={seatsValue}
+                    onChange={(e) => setSeatsValue(e.target.value)}
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div className={style.field}>
+                  <label>Acceleration</label>
+                  <input
+                    value={accelerationValue}
+                    onChange={(e) => setAccelerationValue(e.target.value)}
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div className={style.field}>
+                  <label>Fuel Consumption</label>
+                  <input
+                    value={fuelConsumptionValue}
+                    onChange={(e) => setFuelConsumptionValue(e.target.value)}
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div className={style.field}>
+                  <label>Description</label>
+                  <input
+                    value={descriptionValue}
+                    onChange={(e) => setDescriptionValue(e.target.value)}
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div className={style.field}>
+                  <label>Price</label>
+                  <input
+                    value={priceValue}
+                    onChange={(e) => setPriceValue(e.target.value)}
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div className={style.field}>
+                  <label>Image</label>
+                  <input
+                    value={imageValue}
+                    onChange={(e) => setImageValue(e.target.value)}
+                    placeholder=""
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <button
+              className={style.btn}
+              onClick={onInsertCar}
+              disabled={
+                !nameValue ||
+                !titleValue ||
+                !yearValue ||
+                !originValue ||
+                !weightValue ||
+                !mileageValue ||
+                !gearboxValue ||
+                !fuelTypeValue ||
+                !colourValue ||
+                !bodyTypeValue ||
+                !engineSizeValue ||
+                !doorsValue ||
+                !seatsValue ||
+                !accelerationValue ||
+                !fuelConsumptionValue ||
+                !descriptionValue ||
+                !priceValue ||
+                !imageValue
+              }
+            >
+              Add new car
+            </button>
+          </Modal>
+          <div className={style.container}>
+            {carsInfo.map((car) => (
+              <Link to={`/cars/${car.name}`} key={car._id}>
+                <div className={style.card} key={car._id}>
+                  <h3>{car.name}</h3>
+                  <p>{car.body_type}</p>
+                  <p>{car.origin}</p>
+                  <p>{car.year}</p>
+                  <img
+                    //src={require(`../img/cars/${car.title}.jpg`)}
+                    src={
+                      car.image
+                        ? car.image
+                        : require(`../img/cars/${car.title}.jpg`)
+                    }
+                    alt={car.name}
+                    style={{ width: '200px' }}
+                  />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </main>
+      </div>
     </div>
   );
 };

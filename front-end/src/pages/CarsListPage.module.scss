@@ -1,5 +1,13 @@
 @import '../styles/abstracts/variables';
 
+.bg {
+    background-image: url(https://www.evoximages.com/wp-content/uploads/2021/09/img_0_0_30-e1630602054753.jpg);
+    background-color: rgba(0, 0, 0, 0.4);
+    background-blend-mode: multiply;
+    /* background-size: cover; */
+    background-position: center;
+}
+
 .main {
     display: flex;
     flex-direction: column;
@@ -24,8 +32,7 @@
     width: 300px;
     justify-content: space-evenly;
     border: 1px solid black;
-    background-color: rgba($primary-color, 0.2);
-    
+    background-color: rgba($primary-color, 0.7);
     border-radius: 5px;
     padding: 10px;
     flex-wrap: wrap;

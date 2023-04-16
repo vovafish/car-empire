@@ -6,7 +6,7 @@ export const PleaseVerifyEamilPage = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      navigate('/');
+      navigate('/cars');
     }, 3000);
   }, [navigate]);
 

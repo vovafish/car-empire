@@ -7,8 +7,6 @@ const ReturnOfVehiclePage = () => {
 
   const form = useRef();
 
-  console.log(showMessage);
-
   const sendEmail = (e) => {
     e.preventDefault();
     setShowMessage(true);

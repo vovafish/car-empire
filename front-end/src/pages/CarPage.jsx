@@ -34,10 +34,10 @@ const CarPage = () => {
 
     emailjs
       .sendForm(
-        'service_8lfvu6w',
-        'template_e7yl9tj',
+        'service_2ed9u5h',
+        'template_1luleui',
         form.current,
-        'OobbSW-DHtFMhWbqK'
+        'wa_301WBehLKeEt_a'
       )
       .then(
         (result) => {
@@ -47,6 +47,7 @@ const CarPage = () => {
           console.log(error.text);
         }
       );
+    setModalIsOpen(false);
   };
 
   const customStyles = {
@@ -102,7 +103,7 @@ const CarPage = () => {
       <div>
         <p>Color: {carInfo.colour}</p>
         <p>Gearbox type: {carInfo.gearbox}</p>
-        {console.log(carInfo.image)}
+
         <img
           src={
             carInfo.image
@@ -123,23 +124,28 @@ const CarPage = () => {
           <form ref={form} onSubmit={sendEmail}>
             <div>
               <label>Name</label>
-              <input type="text" name="user_name" />
+              <input type="text" name="user_name" id="name" required />
             </div>
             <div>
               <label>Email</label>
-              <input type="email" name="user_email" />
+              <input type="email" name="user_email" id="email" required />
             </div>
             <div>
               <label>Message</label>
-              <textarea name="message" />
+              <textarea name="message" id="message" />
             </div>
             <div>
               <label>Car</label>
-              <input name="car" placeholder={carInfo.name} readOnly={true} />
+              <input name="car" value={carInfo.name} readOnly={true} id="car" />
             </div>
             <div>
               <label>Car</label>
-              <input name="price" placeholder={carInfo.price} readOnly={true} />
+              <input
+                name="price"
+                value={carInfo.price}
+                readOnly={true}
+                id="price"
+              />
             </div>
             <div>
               <input type="submit" value="Send" />

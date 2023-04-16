@@ -26,7 +26,7 @@ const Footer = () => {
           </span>
         </div>
         <div>
-          <span>Copyright &copy; 2018, All Right Reserved</span>
+          <span>Copyright &copy; 2023, All Right Reserved</span>
         </div>
       </div>
     </footer>
