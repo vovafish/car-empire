@@ -1,11 +1,11 @@
 @import '../styles/abstracts/variables';
 
 .bg {
-    background-image: url(https://www.evoximages.com/wp-content/uploads/2021/09/img_0_0_30-e1630602054753.jpg);
+    background-image: url(https://wallpaperset.com/w/full/4/c/1/311005.jpg);
     background-color: rgba(0, 0, 0, 0.4);
     background-blend-mode: multiply;
     /* background-size: cover; */
-    background-position: center;
+    background-position: bottom;
 }
 
 .main {
@@ -49,6 +49,8 @@
 }
 
 .card img {
+    width: 200px;
+    height: 130px;
     border-radius: 20px;
 }
 .insertForm {

@@ -310,8 +310,9 @@ const CarsListPage = () => {
                 <div className={style.card} key={car._id}>
                   <h3>{car.name}</h3>
                   <p>{car.body_type}</p>
-                  <p>{car.origin}</p>
+                  <p>Manufactured: {car.origin}</p>
                   <p>{car.year}</p>
+                  <p>£{car.price}</p>
                   <img
                     //src={require(`../img/cars/${car.title}.jpg`)}
                     src={
@@ -320,7 +321,6 @@ const CarsListPage = () => {
                         : require(`../img/cars/${car.title}.jpg`)
                     }
                     alt={car.name}
-                    style={{ width: '200px' }}
                   />
                 </div>
               </Link>

@@ -96,63 +96,87 @@ const CarPage = () => {
   /* Creating the HTML that will be displayed when navigate to the CarPage */
   return (
     //creating main container
-    <div className="mainContainer">
-      <p>
-        This is {carInfo.name} and been created in {carInfo.year}
-      </p>
-      <div>
-        <p>Color: {carInfo.colour}</p>
-        <p>Gearbox type: {carInfo.gearbox}</p>
-
-        <img
-          src={
-            carInfo.image
-              ? carInfo.image
-              : require(`../img/cars/${carInfo.title}.jpg`)
-          }
-          alt={carInfo.name}
-          style={{ width: '200px' }}
-        />
-        <button onClick={handlePurchase}>Buy</button>
-        <Modal
-          isOpen={modalIsOpen}
-          ariaHideApp={false}
-          className={style.modal}
-          style={customStyles}
-        >
-          <button onClick={() => setModalIsOpen(false)}>X</button>
-          <form ref={form} onSubmit={sendEmail}>
-            <div>
-              <label>Name</label>
-              <input type="text" name="user_name" id="name" required />
-            </div>
-            <div>
-              <label>Email</label>
-              <input type="email" name="user_email" id="email" required />
-            </div>
-            <div>
-              <label>Message</label>
-              <textarea name="message" id="message" />
-            </div>
-            <div>
-              <label>Car</label>
-              <input name="car" value={carInfo.name} readOnly={true} id="car" />
-            </div>
-            <div>
-              <label>Car</label>
-              <input
-                name="price"
-                value={carInfo.price}
-                readOnly={true}
-                id="price"
-              />
-            </div>
-            <div>
-              <input type="submit" value="Send" />
-            </div>
-          </form>
-        </Modal>
-        {user && user.isAdmin && <button onClick={handleDelete}>Delete</button>}
+    <div className={style.block}>
+      <div className="mainContainer">
+        <main className={style.main}>
+          <div className={style.mainImage}>
+            <img
+              src={
+                carInfo.image
+                  ? carInfo.image
+                  : require(`../img/cars/${carInfo.title}.jpg`)
+              }
+              alt={carInfo.name}
+              style={{ width: '200px' }}
+            />
+          </div>
+          <div className={style.mainInfo}>
+            <h2>
+              This is brand new {carInfo.name} and been menufactured in{' '}
+              {carInfo.year}
+            </h2>
+            <p>Color: {carInfo.colour}</p>
+            <p>Gearbox type: {carInfo.gearbox}</p>
+            <p>Weight: {carInfo.weight} kg.</p>
+            <p>Mileage: {carInfo.mileage} miles</p>
+            <p>Type of Fuel: {carInfo.fuel_type}</p>
+            <p>Fuel consumption: {carInfo.fuel_consumption}</p>
+            <p>Type of Body: {carInfo.body_type}</p>
+            <p>Size of engine: {carInfo.engine_size}</p>
+            <p>
+              This car have {carInfo.doors} doors & {carInfo.seats} seets
+            </p>
+            <p>Acceleration: {carInfo.acceleration}</p>
+            <p>{carInfo.description}</p>
+            <button onClick={handlePurchase}>Buy</button>
+            <Modal
+              isOpen={modalIsOpen}
+              ariaHideApp={false}
+              className={style.modal}
+              style={customStyles}
+            >
+              <button onClick={() => setModalIsOpen(false)}>X</button>
+              <form ref={form} onSubmit={sendEmail}>
+                <div>
+                  <label>Name</label>
+                  <input type="text" name="user_name" id="name" required />
+                </div>
+                <div>
+                  <label>Email</label>
+                  <input type="email" name="user_email" id="email" required />
+                </div>
+                <div>
+                  <label>Message</label>
+                  <textarea name="message" id="message" />
+                </div>
+                <div>
+                  <label>Car</label>
+                  <input
+                    name="car"
+                    value={carInfo.name}
+                    readOnly={true}
+                    id="car"
+                  />
+                </div>
+                <div>
+                  <label>Car</label>
+                  <input
+                    name="price"
+                    value={carInfo.price}
+                    readOnly={true}
+                    id="price"
+                  />
+                </div>
+                <div>
+                  <input type="submit" value="Send" />
+                </div>
+              </form>
+            </Modal>
+            {user && user.isAdmin && (
+              <button onClick={handleDelete}>Delete</button>
+            )}
+          </div>
+        </main>
       </div>
     </div>
   );
