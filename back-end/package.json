@@ -54,7 +54,7 @@
     "mime-types": "^2.1.35",
     "mongo": "^0.1.0",
     "mongod": "^2.0.0",
-    "mongodb": "^4.13.0",
+    "mongodb": "^4.17.0",
     "mongodb-connection-string-url": "^2.6.0",
     "ms": "^2.0.0",
     "negotiator": "^0.6.3",
